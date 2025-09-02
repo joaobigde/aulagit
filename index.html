@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git e GitHub - Guia Simplificado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: #2d333b;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(120deg, #39126b 0%, #1e7f41 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            background: white;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .git-logo {
+            color: #f14e32;
+        }
+        
+        .github-logo {
+            color: #333;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #1c2f9b;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            color: #2ea44f;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaecef;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h2 i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .command-list {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        
+        .command-list li {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .command-list li span {
+            color: #032f62;
+            font-weight: 600;
+        }
+        
+        .step-box {
+            background-color: #f1f8ff;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid #0366d6;
+        }
+        
+        .step-box h3 {
+            color: #0366d6;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-box h3 i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background: linear-gradient(120deg, #2d333b 0%, #22272e 100%);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            border-radius: 12px;
+        }
+        
+        footer p {
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: #1e7f41;
+            font-weight: 600;
+        }
+        
+        code {
+            background: #f6f8fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #e1e4e8;
+            font-size: 0.9rem;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        ul li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 3rem;
+                width: 70px;
+                height: 70px;
+            }
+            
+            .command-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Git e GitHub - Guia Essencial</h1>
+            <p>venha aprender git e gtithub com o bigode ;]</p>
+            <div class="logo-container">
+                <div class="logo git-logo">
+                    <i class="fab fa-git-alt"></i>
+                </div>
+                <div class="logo github-logo">
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h2><i class="fas fa-question-circle"></i> O que é o Git</h2>
+            <p>Git é um sistema de controle de versão distribuído que permite que desenvolvedores acompanhem mudanças no código durante o desenvolvimento de software. Ele foi criado por Linus Torvalds em 2005 para gerenciar o desenvolvimento do kernel Linux.</p>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fab fa-github"></i> O que é o GitHub</h2>
+            <p>GitHub é uma plataforma de hospedagem de código baseada em Git. Ele adiciona recursos próprios como controle de acesso, rastreamento de problemas, solicitações de recursos, gerenciamento de tarefas e wikis para cada projeto.</p>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-exchange-alt"></i> Diferenças entre Git e GitHub</h2>
+            <ul>
+                <li><span class="highlight">Git</span> é uma ferramenta de linha de comando, enquanto <span class="highlight">GitHub</span> é uma plataforma web</li>
+                <li>Git é instalado localmente, GitHub é hospedado na nuvem</li>
+                <li>Git gerencia versões do código, GitHub adiciona colaboração</li>
+                <li>Git é open-source e gratuito, GitHub tem planos gratuitos e pagos</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-terminal"></i> Comandos Linux no Git Bash</h2>
+            <ul class="command-list">
+                <li><span>ls</span> Listar arquivos</li>
+                <li><span>cd</span> Mudar diretório</li>
+                <li><span>pwd</span> Mostrar diretório atual</li>
+                <li><span>mkdir</span> Criar pasta</li>
+                <li><span>rm</span> Remover arquivos</li>
+                <li><span>cp</span> Copiar arquivos</li>
+                <li><span>mv</span> Mover/renomear</li>
+                <li><span>cat</span> Mostrar conteúdo</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-code-branch"></i> Comandos Git Essenciais</h2>
+            <ul class="command-list">
+                <li><span>git init</span> Iniciar repositório</li>
+                <li><span>git clone</span> Clonar repositório</li>
+                <li><span>git add</span> Adicionar alterações</li>
+                <li><span>git commit</span> Registrar mudanças</li>
+                <li><span>git push</span> Enviar para remoto</li>
+                <li><span>git pull</span> Buscar do remoto</li>
+                <li><span>git status</span> Verificar estado</li>
+                <li><span>git log</span> Ver histórico</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-plus-circle"></i> Criar Repositório no GitHub</h2>
+            <div class="step-box">
+                <h3><i class="fas fa-sign-in-alt"></i> Passo 1: Login</h3>
+                <p>Acesse github.com e faça login na sua conta.</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-plus"></i> Passo 2: Novo repositório</h3>
+                <p>Clique no ícone "+" no canto superior direito e selecione "New repository".</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-edit"></i> Passo 3: Preencher dados</h3>
+                <p>Digite um nome, descrição e escolha a visibilidade (público ou privado).</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-check-circle"></i> Passo 4: Criar</h3>
+                <p>Clique em "Create repository" para finalizar.</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-link"></i> Conectar Projeto Existente ao GitHub</h2>
+            <div class="step-box">
+                <h3><i class="fas fa-folder-open"></i> Passo 1: Inicializar Git</h3>
+                <p>Execute: <code>git init</code> na pasta do projeto</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-plus-square"></i> Passo 2: Adicionar arquivos</h3>
+                <p>Execute: <code>git add .</code> para adicionar tudo</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-code-commit"></i> Passo 3: Primeiro commit</h3>
+                <p>Execute: <code>git commit -m "Primeiro commit"</code></p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-plug"></i> Passo 4: Conectar ao GitHub</h3>
+                <p>Execute: <code>git remote add origin URL_DO_REPOSITORIO</code></p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-cloud-upload-alt"></i> Passo 5: Enviar</h3>
+                <p>Execute: <code>git push -u origin main</code></p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-tag"></i> Como Gerar uma Versão (Commit)</h2>
+            <div class="step-box">
+                <h3><i class="fas fa-list"></i> Passo 1: Verificar status</h3>
+                <p>Execute <code>git status</code> para ver as alterações</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-plus"></i> Passo 2: Adicionar mudanças</h3>
+                <p>Execute <code>git add .</code> ou <code>git add arquivo.especifico</code></p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-check"></i> Passo 3: Fazer commit</h3>
+                <p>Execute <code>git commit -m "Mensagem descritiva"</code></p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-cloud-upload-alt"></i> Enviar para o GitHub</h2>
+            <div class="step-box">
+                <h3><i class="fas fa-code-commit"></i> Passo 1: Commit das alterações</h3>
+                <p>Certifique-se de ter feito commit de todas as alterações</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-upload"></i> Passo 2: Enviar para remoto</h3>
+                <p>Execute <code>git push origin main</code> (ou seu branch)</p>
+            </div>
+            <div class="step-box">
+                <h3><i class="fas fa-check-double"></i> Passo 3: Verificar</h3>
+                <p>Acesse seu repositório no GitHub para confirmar o envio</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <footer>
+            <p>Desenvolvido por <span class="highlight">João Pedro Velasquez de Freitas</span></p>
+        </footer>
+    </div>
+</body>
+</html>
